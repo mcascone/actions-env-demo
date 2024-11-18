@@ -1,0 +1,27 @@
+name: Continous Deploy Demo
+
+on:
+  push:
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell:
+      bash
+
+jobs:
+  DEV:
+    runs-on: ubuntu-latest
+    environment: DEV
+
+    steps:
+      - name: deploy-to-dev
+        run: echo Deploying To Dev! >> $GITHUB_STEP_SUMMARY
+
+  PROD:
+    runs-on: ubuntu-latest
+    environment: PROD
+
+    steps:
+      - name: deploy-to-prod
+        run: echo Deploying to PROD! >> $GITHUB_STEP_SUMMARY
