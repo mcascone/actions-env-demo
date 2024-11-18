@@ -23,7 +23,7 @@ jobs:
       - run: |
           workflow_file=$GITHUB_WORKSPACE/.github/workflows/cd.yml
 
-          yq '.jobs[] | key' $workflow_file >> $GITHUB_STEP_SUMMARY
+          echo $(yq '.jobs[] | key' $workflow_file) >> $GITHUB_STEP_SUMMARY
 
 
   # DEV:
