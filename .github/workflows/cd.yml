@@ -21,7 +21,9 @@ jobs:
           ref: ${{ github.head_ref }} # specify the triggering branch, avoids edge case bug in PR workflows
 
       - run: |
-          cat $GITHUB_WORKSPACE/.github/workflows/cd.yml >> $GITHUB_STEP_SUMMARY
+          workflow_file=$GITHUB_WORKSPACE/.github/workflows/cd.yml
+
+          yq '.jobs[] | key' $workflow_file >> $GITHUB_STEP_SUMMARY
 
 
   # DEV:
