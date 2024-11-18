@@ -21,9 +21,7 @@ jobs:
           ref: ${{ github.head_ref }}
 
       - run: |
-          workflow_file=$GITHUB_WORKSPACE/.github/workflows/cd.yml
-          jobs=$(yq '.jobs[] | key' $workflow_file)
-          echo $jobs >> $GITHUB_STEP_SUMMARY
+          yq '.jobs[] | key' $GITHUB_WORKSPACE/.github/workflows/cd.yml >> $GITHUB_STEP_SUMMARY
 
 
   DEV:
