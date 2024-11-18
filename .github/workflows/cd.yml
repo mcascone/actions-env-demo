@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - run: |
-          ls $GITHUB_WORKSPACE/..
+          ls -la $GITHUB_WORKSPACE/..
 
 
   # DEV:
