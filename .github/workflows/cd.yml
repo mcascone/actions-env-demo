@@ -18,12 +18,12 @@ jobs:
       - name: Checkout Calling Repo
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.head_ref }} # specify the triggering branch, avoids edge case bug in PR workflows
+          ref: ${{ github.head_ref }}
 
       - run: |
           workflow_file=$GITHUB_WORKSPACE/.github/workflows/cd.yml
-
-          echo "$(yq '.jobs[] | key' $workflow_file)" >> $GITHUB_STEP_SUMMARY
+          jobs=$(yq '.jobs[] | key' $workflow_file)
+          echo $jobs >> $GITHUB_STEP_SUMMARY
 
 
   # DEV:
