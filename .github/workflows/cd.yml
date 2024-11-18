@@ -19,6 +19,7 @@ jobs:
         run: echo Deploying To Dev! >> $GITHUB_STEP_SUMMARY
 
   PROD:
+    needs: [ DEV ]
     runs-on: ubuntu-latest
     environment: PROD
 
