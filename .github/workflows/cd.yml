@@ -3,6 +3,7 @@ name: Continous Deploy Demo
 on:
   push:
   workflow_dispatch:
+  workflow_call:
 
 defaults:
   run:
@@ -14,22 +15,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "${{ toJSON(github) }}"
+      - run: echo '${{ toJSON(jobs) }}'
 
 
-  # DEV:
-  #   runs-on: ubuntu-latest
-  #   environment: DEV
+  DEV:
+    runs-on: ubuntu-latest
+    # environment: DEV
 
-  #   steps:
-  #     - name: deploy-to-dev
-  #       run: echo Deploying To Dev! >> $GITHUB_STEP_SUMMARY
+    steps:
+      - name: deploy-to-dev
+        run: echo Deploying To Dev! >> $GITHUB_STEP_SUMMARY
 
-  # PROD:
-  #   needs: [ DEV ]
-  #   runs-on: ubuntu-latest
-  #   environment: PROD
+  PROD:
+    needs: [ DEV ]
+    runs-on: ubuntu-latest
+    # environment: PROD
 
-  #   steps:
-  #     - name: deploy-to-prod
-  #       run: echo Deploying to PROD! >> $GITHUB_STEP_SUMMARY
+    steps:
+      - name: deploy-to-prod
+        run: echo Deploying to PROD! >> $GITHUB_STEP_SUMMARY
