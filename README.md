@@ -7,7 +7,7 @@ There are two environments configured: `DEV` and `PROD`.
 
 - `DEV` has no deploy protections.
 - `PROD` must be approved before deploys will proceed.
-  - `PROD` depends on `DEV`. If `DEV` fails, `PROD` will not run.
+- `PROD` depends on `DEV`. If `DEV` fails, `PROD` will not run.
 
 ## Configuration
 

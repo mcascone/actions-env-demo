@@ -10,19 +10,25 @@ defaults:
       bash
 
 jobs:
-  DEV:
+  init:
     runs-on: ubuntu-latest
-    environment: DEV
-
     steps:
-      - name: deploy-to-dev
-        run: echo Deploying To Dev! >> $GITHUB_STEP_SUMMARY
+      - run: echo ${{ github }}
 
-  PROD:
-    needs: [ DEV ]
-    runs-on: ubuntu-latest
-    environment: PROD
 
-    steps:
-      - name: deploy-to-prod
-        run: echo Deploying to PROD! >> $GITHUB_STEP_SUMMARY
+  # DEV:
+  #   runs-on: ubuntu-latest
+  #   environment: DEV
+
+  #   steps:
+  #     - name: deploy-to-dev
+  #       run: echo Deploying To Dev! >> $GITHUB_STEP_SUMMARY
+
+  # PROD:
+  #   needs: [ DEV ]
+  #   runs-on: ubuntu-latest
+  #   environment: PROD
+
+  #   steps:
+  #     - name: deploy-to-prod
+  #       run: echo Deploying to PROD! >> $GITHUB_STEP_SUMMARY
