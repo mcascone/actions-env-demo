@@ -19,9 +19,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }} # specify the triggering branch, avoids edge case bug in PR workflows
-          
+
       - run: |
-          ls -la $GITHUB_WORKSPACE/
+          cat $GITHUB_WORKSPACE/.github/workflows/cd.yml >> $GITHUB_STEP_SUMMARY
 
 
   # DEV:
