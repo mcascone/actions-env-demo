@@ -23,7 +23,7 @@ jobs:
       - run: |
           workflow_file=$GITHUB_WORKSPACE/.github/workflows/cd.yml
           jobs=$(yq '.jobs[] | key' $workflow_file)
-          echo $jobs >> $GITHUB_STEP_SUMMARY
+          echo $jobs
 
 
   DEV:
@@ -32,7 +32,7 @@ jobs:
 
     steps:
       - name: deploy-to-dev
-        run: echo Deploying To Dev! >> $GITHUB_STEP_SUMMARY
+        run: echo Deploying To Dev!
 
   PROD:
     needs: [ DEV ]
@@ -41,4 +41,6 @@ jobs:
 
     steps:
       - name: deploy-to-prod
-        run: echo Deploying to PROD! >> $GITHUB_STEP_SUMMARY
+        run: |
+          echo '${{ toJSON(needs) }}'
+          echo Deploying to PROD!
